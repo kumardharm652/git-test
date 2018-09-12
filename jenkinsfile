@@ -1,0 +1,10 @@
+pipeline{
+	agent any
+	staes{
+		stage('one'){
+			steps{
+				echo 'Hi, This is dharmender'
+				}
+			}
+		}
+	}
