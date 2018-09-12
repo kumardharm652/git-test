@@ -1,6 +1,6 @@
 pipeline{
 	agent any
-	staes{
+	stages{
 		stage('one'){
 			steps{
 				echo 'Hi, This is dharmender'
@@ -20,5 +20,27 @@ pipeline{
 			steps{
 				echo "hello"
 				}
-		}
+			}
+		stage('four'){
+			paralle{
+				stage('unit test'){
+					steps{
+						echo "runnit the unit test..."
+						}
+					}
+				stage('Integration test'){
+					agent{
+						docker{
+							reuseNode false
+							image 'ubuntu'
+							}
+						}
+						steps{
+							echo "running the integration test..."
+							}
+						}
+					}
+				}
+		
 	}
+}
